@@ -6,3 +6,4 @@ services:
     container_name: reactjs-jenkins-cont
     ports: 
       - "8085:80"
+    pull_policy: build
