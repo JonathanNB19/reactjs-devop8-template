@@ -68,7 +68,7 @@ pipeline{
         }
 
         success{
-            sh " echo 'This is the success message ' "
+            sh " echo 'This is the success message for clear ' "
         }
         failure{
             // send message ( notification channel )
