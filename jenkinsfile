@@ -1,43 +1,79 @@
-pipeline {
-    agent any
-    tools {
-        nodejs 'node-latest'
-    }
+// pipeline {
+//     agent any
+//     tools {
+//         nodejs 'node-latest'
+//     }
 
-    stages {
-        // stage('Get Code') {
-        //     steps {
-        //         echo  "Getting code from github..."
-        //         git 'https://github.com/sexymanalive/reactjs-devop8-template'
-        //         sh 'ls -lrt'
-        //     }
-        // }
+//     stages {
+//         // stage('Get Code') {
+//         //     steps {
+//         //         echo  "Getting code from github..."
+//         //         git 'https://github.com/sexymanalive/reactjs-devop8-template'
+//         //         sh 'ls -lrt'
+//         //     }
+//         // }
 
-        // stage("Install dependencies "){
-        //     steps{
-        //         sh " npm install "
-        //     }
-        // }
-        // stage("Run Tests"){
-        //     steps {
-        //         sh " npm test "
-        //     }
-        // }
+//         // stage("Install dependencies "){
+//         //     steps{
+//         //         sh " npm install "
+//         //     }
+//         // }
+//         // stage("Run Tests"){
+//         //     steps {
+//         //         sh " npm test "
+//         //     }
+//         // }
 
-        stage("Build and Deploy"){
+//         stage("Build and Deploy"){
+//             steps{
+//                 echo "Using docker compose to build and deploy "
+//                 sh """
+//                     docker compose up -d
+//                 """
+//             }
+//         }
+
+//         stage("Add domain name"){
+//             steps{
+//                 echo "Run shellscript to add domain "
+               
+//             }
+//         }
+//     }
+// }
+
+//pipeling clear workspace
+pipeline{
+    agent any 
+    stages{
+        stage("Stage one "){
             steps{
-                echo "Using docker compose to build and deploy "
                 sh """
-                    docker compose up -d
+
+                docker -v
+                docker compose version 
+
                 """
             }
         }
+    }
 
-        stage("Add domain name"){
-            steps{
-                echo "Run shellscript to add domain "
-               
-            }
+    post{
+        always{
+            sh """
+            echo " this is will always get executed "
+            """
+        }
+
+        success{
+            sh " echo 'This is the success message ' "
+        }
+        failure{
+            // send message ( notification channel )
+            sh  "  echo 'This pipeline results in failure' "
+        }
+        cleanUp{
+            cleanWs()
         }
     }
 }
