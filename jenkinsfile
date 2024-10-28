@@ -219,7 +219,7 @@ pipeline{
         }
         always{
             sh """
-            echo " this is will always get executed "
+            echo " this is will always get executed file "
             """
         }
         failure{
