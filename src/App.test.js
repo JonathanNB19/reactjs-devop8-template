@@ -5,7 +5,7 @@ import { MemoryRouter, Route, Routes } from 'react-router-dom';
 
 test('renders learn react link', () => {
   render(<HomePage />);
-  const linkElement = screen.getByText(/love helping you/i);
+  const linkElement = screen.getByText(/Welcome to React Shopping store/i);
   expect(linkElement).toBeInTheDocument();
 });
 
