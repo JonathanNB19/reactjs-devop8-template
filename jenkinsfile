@@ -228,7 +228,7 @@ pipeline{
             """
         }
         failure{
-            sh " echo' this is failed message '"
+            sh " echo' this is failed message on post'"
         }
     }
 }
