@@ -187,10 +187,11 @@ pipeline{
 
                 docker -v
                 docker compose version 
-                
+
                 """
             }
         }
+    }
 
         stage("Stage Two"){
             // Stage or Production 
@@ -210,6 +211,10 @@ pipeline{
                     // if deployOption==....
                 }
             }
+        }
+
+        success{
+            sh " echo 'This is the success message ' "
         }
     }
 
