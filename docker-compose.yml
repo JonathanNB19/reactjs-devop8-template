@@ -1,7 +1,7 @@
 
 services: 
   reactjs-srv: 
-    image: reacjs-nginx-jenkins:v1.0.0
+    image: tichhungkhat/reacjs-nginx-jenkins:v1.1.0
     build: . 
     container_name: reactjs-jenkins-cont
     ports: 
